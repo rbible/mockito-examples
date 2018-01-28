@@ -13,16 +13,16 @@ import com.gale.domain.Foo;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DeepStubsTest {
-	
-	@Mock(answer = Answers.RETURNS_DEEP_STUBS) Foo mockFoo;
-	
-	@Test
-	public void deepStubsTest() {
-		when(mockFoo.getBar().getName()).thenReturn("deep");
-		
-		String result = mockFoo.getBar().getName();
 
-		assertEquals("deep", result);
-	}
+    @Mock(answer = Answers.RETURNS_DEEP_STUBS)
+    Foo mockFoo;
 
+    @Test
+    public void deepStubsTest() {
+        when(mockFoo.getBar().getName()).thenReturn("deep");
+
+        String result = mockFoo.getBar().getName();
+
+        assertEquals("deep", result);
+    }
 }

@@ -17,41 +17,34 @@ import com.gale.domain.Foo;
 
 @RunWith(MockitoJUnitRunner.class)
 public class InjectionTest {
-	
-	@Mock private Bar bar;
-	@InjectMocks private Foo foo = new Foo();
 
-	@Test
-	public void simpleStub() {
-		//look Ma, no setter!
-		when(bar.getName()).thenReturn("foobar");
-		
-		String result = foo.getBarName();
-		
-		assertThat(result, containsString("foo"));
-	}
-	
-	
-	//imagine..
-	//@InjectMocks private CreateReaderPortlet portlet = new CreateReaderPortlet();
-	//@Mock private ReaderRepository mockReaderRepository;
-	//@Mock private ReaderService mockReaderService;
-	//@Mock private BannerManager bannerManager;
-	//@Mock private PortletValidator mockPortletValidator;
-	//@Mock private UserSessionFacade userSessionFacade;
-	
-	
-	@Captor ArgumentCaptor<Bar> captor;
-	@Test
-	public void captorTest() {
-		Foo foo = new Foo();
-		Bar bar = mock(Bar.class);
-		foo.setBar(bar);
-		
-		foo.wuzzle();
-		
-		verify(bar).wuzzle(captor.capture());
-		assertThat(captor.getValue().getName(), containsString("wuzzle"));
-	}
-	
+    @Mock
+    private Bar bar;
+    @InjectMocks
+    private Foo foo = new Foo();
+
+    @Test
+    public void simpleStub() {
+        when(bar.getName()).thenReturn("foobar");
+
+        String result = foo.getBarName();
+
+        assertThat(result, containsString("foo"));
+    }
+
+    @Captor
+    ArgumentCaptor<Bar> captor;
+
+    @Test
+    public void captorTest() {
+        Foo foo = new Foo();
+        Bar bar = mock(Bar.class);
+        foo.setBar(bar);
+
+        foo.wuzzle();
+
+        verify(bar).wuzzle(captor.capture());
+        assertThat(captor.getValue().getName(), containsString("wuzzle"));
+    }
+
 }

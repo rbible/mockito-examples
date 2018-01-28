@@ -15,18 +15,20 @@ import com.gale.domain.Foo;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BDDTest {
-	
-	@Mock Bar bar;
-	@InjectMocks Foo foo = new Foo();
 
-	@Test
-	public void simpleStub() throws Exception {
-		given(bar.getName()).willReturn("foobar");
-		
-		//execute
-		String result = bar.getName();
-		
-		assertThat(result, containsString("foo"));
-	}
-	
+    @Mock
+    Bar bar;
+    @InjectMocks
+    Foo foo = new Foo();
+
+    @Test
+    public void simpleStub() throws Exception {
+        given(bar.getName()).willReturn("foobar");
+
+        //execute
+        String result = bar.getName();
+
+        assertThat(result, containsString("foo"));
+    }
+
 }

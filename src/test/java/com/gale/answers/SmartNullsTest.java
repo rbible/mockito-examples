@@ -9,24 +9,26 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.gale.domain.Bar;
 import com.gale.domain.Foo;
 
+import static org.junit.Assert.assertThat;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class SmartNullsTest {
-	
-	@Mock(answer = Answers.RETURNS_SMART_NULLS) Foo mockFoo;
-	
-	@Test
-	public void nullTest_shouldFail() {
-		Bar b = new Foo().getBar();
-		
-		String result = b.getName(); //throws null pointer
-	}
-	
-	@Test
-	public void smartNullTest_shouldFail() {
-		Bar b = mockFoo.getBar();
-		
-		String result = b.getName(); //throws "smart" null pointer
-	}
 
+    @Mock(answer = Answers.RETURNS_SMART_NULLS)
+    Foo mockFoo;
+
+    @Test
+    public void nullTest_shouldFail() {
+        Bar b = new Foo().getBar();
+
+        b.getName(); //throws null pointer
+    }
+
+    @Test
+    public void smartNullTest_shouldFail() {
+        Bar b = mockFoo.getBar();
+
+        b.getName(); //throws "smart" null pointer
+    }
 }
