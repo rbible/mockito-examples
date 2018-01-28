@@ -20,7 +20,7 @@ public class BasicsTest {
     Bar bar;
 
     @Test
-    public void simpleStub() {
+    public void 简单桩示例() {
         Foo foo = new Foo();
         foo.setBar(bar);
         when(bar.getName()).thenReturn("foobar");
@@ -31,7 +31,7 @@ public class BasicsTest {
     }
 
     @Test
-    public void simpleVerify() {
+    public void 简单验证示例() {
         Foo foo = new Foo();
         foo.setBar(bar);
         foo.getBarName();
