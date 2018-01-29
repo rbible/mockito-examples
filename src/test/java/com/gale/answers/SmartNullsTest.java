@@ -1,16 +1,13 @@
 package com.gale.answers;
 
+import com.gale.domain.Bar;
+import com.gale.domain.Foo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.exceptions.verification.SmartNullPointerException;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import com.gale.domain.Bar;
-import com.gale.domain.Foo;
-
-import static org.junit.Assert.assertThat;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,7 +26,7 @@ public class SmartNullsTest {
     @Test(expected = SmartNullPointerException.class)
     public void smartNullTest_shouldFail() {
         Bar b = mockFoo.getBar();
-
-        b.getName(); //throws "smart" null pointer
+        //throws "smart" null pointer
+        b.getName();
     }
 }
